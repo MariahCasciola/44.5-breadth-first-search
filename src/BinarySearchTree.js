@@ -64,7 +64,24 @@ class BinarySearchTree {
   }
 
   bfs(tree, values = []) {
-    // your solution here
+    const queue = new Queue();
+    // start traversal at the tree and add the tree node to the queue to kick off the BFS
+    queue.enqueue(tree);
+    // remove from the queue
+    let node = queue.dequeue();
+    while (node) {
+      // add that value from the queue to an array
+      values.push(node.value);
+      if (node.left) {
+        // add the left child to the queue
+        queue.enqueue(node.left);
+      }
+      if (node.right) {
+        // add the right child to the queue
+        queue.enqueue(node.right);
+      }
+      node = queue.dequeue();
+    }
     return values;
   }
 
